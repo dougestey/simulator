@@ -71,8 +71,7 @@ Simulator.events = {
             return 'MSPointer'+ a.toUpperCase();
           });
 
-        var event = document.createEvent('Event');
-        event.initEvent(msEventType || eventType, true, true);
+        var event = new Event(msEventType || eventType);
 
         event.getCurrentPoint = function() { return touch; };
         event.setPointerCapture = event.releasePointerCapture = function() { };
@@ -132,8 +131,7 @@ Simulator.events = {
         });
       });
 
-      var event = document.createEvent('Event');
-      event.initEvent('touch' + type, true, true);
+      var event = new Event('touch' + type);
 
       if (type !== 'end') {
         var targetTouches = touchList.filter(function(touch){
